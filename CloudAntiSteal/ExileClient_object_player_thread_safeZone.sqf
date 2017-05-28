@@ -23,6 +23,10 @@ if (_vehicle isEqualTo player) then
 }
 else
 {
+	if(player in (_vehicle getVariable["ExileVehicleCrew", []])) then
+	{
+		_vehicle setVariable ["ExileVehicleCrew", units player, true];
+	};
   if(!(player in (_vehicle getVariable["ExileVehicleCrew", []])) and !(_vehicle getVariable ["ExileVehicleCrew", []] isEqualTo [])) then
   {
     ["Sorry, this is not your vehicle."] spawn ExileClient_gui_baguette_show;
@@ -30,7 +34,7 @@ else
   };
   if((_vehicle getVariable ["ExileVehicleCrew", []] isEqualTo [])) then
   {
-    _vehicle setVariable ["ExileVehicleCrew", crew ExileClientSafeZoneVehicle, true];
+    _vehicle setVariable ["ExileVehicleCrew", units (driver _vehicle), true];
   };
 	if (local _vehicle) then
 	{

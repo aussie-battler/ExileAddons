@@ -39,7 +39,7 @@ try
 	{
 		throw true;
 	};
-  if(!(player in (_container getVariable ["ExileVehicleCrew", []])) and !(_container getVariable ["ExileVehicleCrew", []] isEqualTo []) and ((cursorObject isKindOf "Car") or (cursorObject isKindOf "Air"))) then
+  if(!(player in (_container getVariable ["ExileVehicleCrew", []])) and !(_container getVariable ["ExileVehicleCrew", []] isEqualTo []) and ((cursorObject isKindOf "Car") or (cursorObject isKindOf "Air")) and ExilePlayerInSafezone) then
   {
       ["Sorry this is not your vehicle!"] spawn ExileClient_gui_baguette_show;
       throw true;
